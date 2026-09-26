@@ -1,5 +1,6 @@
 #include <iostream>
 #include <limits>
+#include <cmath>
 #include "BasicCalculator.h"
 
 void BasicCalculator::run() {
@@ -29,6 +30,13 @@ void BasicCalculator::run() {
             std::cout << "Undefined\n";
         } else {
             total = num1 / num2;
+            std::cout << num1 << " " << operation << " " << num2 << " = " << total << std::endl;
+        }
+    } else if (operation == '%') {
+        if (num2 == 0) {
+            std::cout << "Undefined\n";
+        } else {
+            total = std::fmod(num1, num2);
             std::cout << num1 << " " << operation << " " << num2 << " = " << total << std::endl;
         }
     } else {
