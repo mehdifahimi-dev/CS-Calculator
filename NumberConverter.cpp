@@ -2,6 +2,7 @@
 #include <limits>
 #include <vector>
 #include <string>
+#include <stdexcept>
 #include "NumberConverter.h"
 
 void NumberConverter::run() {
@@ -10,7 +11,8 @@ void NumberConverter::run() {
     std::cout << "Number System Converter\n";
     std::cout << "  1. Decimal to Binary\n";
     std::cout << "  2. Binary to Decimal\n";
-    std::cout << "  3. Back\n";
+    std::cout << "  3. Decimal to Hexadecimal\n";
+    std::cout << "  4. Back\n";
     std::cout << std::endl;
 
     int option;
@@ -66,12 +68,60 @@ void NumberConverter::run() {
         }
         std::cout << result;
         std::cout << std::endl;
-        
+
     } else if (option == 3) {
+        std::cout << "Decimal to Hexadecimal Selected\n";
+
+        std::string nonNegativeNum1;
+        std::cout << "Enter a non-negative integer: ";
+        std::cin >> nonNegativeNum1;
+        for (int i = 0; i < nonNegativeNum1.size(); i++) {
+            if (nonNegativeNum1[i] < '0' || nonNegativeNum1[i] > '9') {
+                std::cout << "Invalid input!\n";
+                return;
+            }
+        }
+        int convertedString;
+        try {
+            convertedString = std::stoi(nonNegativeNum1);
+        }
+        catch (const std::out_of_range& e) {
+            std::cout << "Number is too large!\n";
+            return;
+        }
+        int dec = convertedString;
+
+        std::vector <char> hexDecimal;
+
+        if (convertedString == 0) {
+        std::cout << "0\n";
+        return;
+        }
+        while(convertedString > 0) {
+            int remainder1;
+            remainder1 = convertedString % 16;
+            convertedString = convertedString / 16;
+
+            char character;
+            if (remainder1 < 10) {
+                character = '0' + remainder1;
+            } else {
+                character = 'A' + (remainder1 - 10);
+            }
+
+            hexDecimal.push_back(character);
+        }
+        std::cout << "The decimal (" << dec << ") to hexadecimal is: ";
+        for (int i = hexDecimal.size() - 1; i >= 0; i--) {
+            std::cout << hexDecimal[i];
+        }
+        std::cout << std::endl; 
+
+    } else if (option == 4) {
         return;
     } else {
         std::cout << "Invalid Choice!\n";
     }
-
+    
     
 }
