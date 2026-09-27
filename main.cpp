@@ -1,10 +1,12 @@
 #include <iostream>
 #include <limits>
 #include "BasicCalculator.h"
+#include "NumberConverter.h"
 
 int main () {
 
     BasicCalculator basicCalculator;
+    NumberConverter numConverter;
 
     std::cout << std::endl;
     std::cout<< "CS Calculator" << std::endl;
@@ -34,7 +36,7 @@ int main () {
         if (choice == 1) {
             basicCalculator.run();
         } else if (choice == 2) {
-            std::cout << "Number System Converter Selected\n";
+            numConverter.run();
         } else if (choice == 3) {
             std::cout << "Bitwise Calculator Selected\n";
         } else if (choice == 4) {
