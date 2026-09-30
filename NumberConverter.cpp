@@ -12,12 +12,21 @@ void NumberConverter::run() {
     std::cout << "  1. Decimal to Binary\n";
     std::cout << "  2. Binary to Decimal\n";
     std::cout << "  3. Decimal to Hexadecimal\n";
-    std::cout << "  4. Back\n";
+    std::cout << "  4. Hexadecimal to Decimal\n";
+    std::cout << "  5. Back\n";
     std::cout << std::endl;
 
     int option;
     std::cout << "Enter your choice: ";
     std::cin >> option;
+
+    if (std::cin.fail()) {
+        std::cout << "Invalid input!\n";
+        std::cout << std::endl;
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        return;
+    }
 
     if (option == 1) {
         std::cout << "Decimal to Binary Selected\n";
@@ -118,10 +127,50 @@ void NumberConverter::run() {
         std::cout << std::endl; 
 
     } else if (option == 4) {
+        std::cout << "Hexadecimal to Decimal Selected\n";
+        std::cout << "Enter a hexadecimal number: ";
+        std::string hexa;
+        std::cin >> hexa;
+
+        for (int i = 0; i < hexa.size(); i++) {
+            if (!((hexa[i] >= '0' && hexa[i] <= '9') || (hexa[i] >= 'A' && hexa[i] <= 'F') || (hexa[i] >= 'a' && hexa[i] <= 'f'))) {
+                std::cout << "Invalid hexadecimal number!\n";
+                return;
+            }
+        }
+        unsigned long long hexToDecResult = 0;
+        unsigned long long maxValue = std::numeric_limits<unsigned long long>::max();
+
+        for (int i = 0; i < hexa.size(); i++) {
+            int digitValue;
+            if (hexa[i] >= '0' && hexa[i] <= '9') {
+                digitValue = hexa[i] - '0';
+            } else if (hexa[i] == 'A' || hexa[i] == 'a') {
+                digitValue = 10;
+            } else if (hexa[i] == 'B' || hexa[i] == 'b') {
+                digitValue = 11;
+            } else if (hexa[i] == 'C' || hexa[i] == 'c') {
+                digitValue = 12;
+            } else if (hexa[i] == 'D' || hexa[i] == 'd') {
+                digitValue = 13;
+            } else if (hexa[i] == 'E' || hexa[i] == 'e') {
+                digitValue = 14;
+            } else {
+                digitValue = 15;
+            }
+
+            if (hexToDecResult > (maxValue - digitValue) / 16) {
+                std::cout << "Number is too large!\n";
+                return;
+            }
+            hexToDecResult = (hexToDecResult * 16) + digitValue;
+        }
+        std::cout << hexToDecResult;
+        std::cout << std::endl;
+    } else if (option == 5) {
         return;
     } else {
         std::cout << "Invalid Choice!\n";
     }
-    
-    
+
 }
