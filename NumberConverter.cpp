@@ -34,6 +34,7 @@ void NumberConverter::run() {
 
         // Decimal to binary
         if (optionNumber == 1) {
+            std::cout<< std::endl;
             std::cout << "Decimal to Binary Selected\n";
             
             std::string decimalInput;
@@ -83,6 +84,7 @@ void NumberConverter::run() {
         
         // Binary to decimal
         } else if (optionNumber == 2) {
+            std::cout << std::endl;
             std::cout << "Binary to Decimal Selected\n";
             std::string binary;
             std::cout << "Enter a binary number: ";
@@ -120,10 +122,12 @@ void NumberConverter::run() {
             if (binaryOverflow) {
                 continue;
             }
+            std::cout << "Binary (" << binary << ") to decimal is: ";
             std::cout << result << std::endl;
 
         // Decimal to hexadecimal
         } else if (optionNumber == 3) {
+            std::cout << std::endl;
             std::cout << "Decimal to Hexadecimal Selected\n";
 
             std::string nonNegativeNum1;
@@ -144,15 +148,15 @@ void NumberConverter::run() {
                 continue;
             }
 
-            int convertedString;
+            unsigned long long convertedString;
             try {
-                convertedString = std::stoi(nonNegativeNum1);
+                convertedString = std::stoull(nonNegativeNum1);
             }
             catch (const std::out_of_range& e) {
                 std::cout << "Number is too large!\n";
                 continue;
             }
-            int dec = convertedString;
+            unsigned long long dec = convertedString;
 
             std::vector <char> hexDecimal;
 
@@ -182,6 +186,7 @@ void NumberConverter::run() {
 
         // Hexadecimal to decimal
         } else if (optionNumber == 4) {
+            std::cout << std::endl;
             std::cout << "Hexadecimal to Decimal Selected\n";
             std::cout << "Enter a hexadecimal number: ";
             std::string hexa;
@@ -234,11 +239,13 @@ void NumberConverter::run() {
             if (hexOverflow) {
                 continue;
             }
+            std::cout << "Hexadecimal (" << hexa << ") to decimal is: ";
             std::cout << hexToDecResult;
             std::cout << std::endl;
         
         // Decimal to Octal
         } else if (optionNumber == 5) {
+            std::cout << std::endl;
             std::cout << "Decimal to Octal Selected\n";
             std::string decNum;
             std::cout << "Enter a non-negative integer: ";
@@ -287,6 +294,7 @@ void NumberConverter::run() {
 
         // Binary to Octal
         } else if (optionNumber == 6) {
+            std::cout << std::endl;
             std::cout << "Binary to Octal Selected\n";
             std::cout << "Enter a binary number: ";
 
@@ -331,6 +339,7 @@ void NumberConverter::run() {
 
         // Octal to Binary
         } else if (optionNumber == 7) {
+            std::cout << std::endl;
             std::cout << "Octal to Binary Selected\n";
             std::cout << "Enter an octal number: ";
             std::string octalNum;
