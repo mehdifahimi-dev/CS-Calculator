@@ -2,11 +2,13 @@
 #include <limits>
 #include "BasicCalculator.h"
 #include "NumberConverter.h"
+#include "BitwiseCalculator.h"
 
 int main () {
 
     BasicCalculator basicCalculator;
     NumberConverter numConverter;
+    BitwiseCalculator bitWise;
 
     std::cout << std::endl;
     std::cout<< "CS Calculator" << std::endl;
@@ -38,7 +40,7 @@ int main () {
         } else if (choice == 2) {
             numConverter.run();
         } else if (choice == 3) {
-            std::cout << "Bitwise Calculator Selected\n";
+            bitWise.run();
         } else if (choice == 4) {
             std::cout << "2's Complement Selected\n";
         } else if (choice == 5) {
