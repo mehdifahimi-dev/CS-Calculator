@@ -166,16 +166,189 @@ void BitwiseCalculator::run() {
             std::cout << "      " << binaryNum2 << std::endl;
             std::cout << "-----------------------" << std::endl;
             std::cout << "      " << orResult << std::endl;
-
+        
+        // XOR Operation
         } else if (selectOption == 3) {
             std::cout << std::endl;
             std::cout << "XOR Operation Selected\n";
+            std::cout << "Enter first binary number: ";
+            std::string binaryOne;
+            std::cin >> binaryOne;
+
+            bool validBinary = true;
+
+            // checks if the number is 0 or 1
+            for (int i = 0; i < binaryOne.size(); i++) {
+                if (binaryOne[i] != '0' && binaryOne[i] != '1') {
+                    std::cout << "Invalid binary number!\n";
+                    validBinary = false;
+                    break;
+                }
+            }
+            if (!validBinary) {
+                continue;
+            }
+
+            std::cout << "Enter second binary number: ";
+            std::string binaryTwo;
+            std::cin >> binaryTwo;
+
+            bool validSecondBinary = true;
+
+            // checks if the number is 0 or 1
+            for (int i = 0; i < binaryTwo.size(); i++) {
+                if (binaryTwo[i] != '0' && binaryTwo[i] != '1') {
+                    std::cout << "Invalid binary number!\n";
+                    validSecondBinary = false;
+                    break;
+                }
+            }
+            if (!validSecondBinary) {
+                continue;
+            }
+
+            // makes the two binary number the same length by adding leading 0 if one is shorter
+            if (binaryOne.size() > binaryTwo.size()) {
+                while (binaryTwo.size() != binaryOne.size()) {
+                    binaryTwo = '0' + binaryTwo;
+                }
+            } else {
+                while (binaryOne.size() != binaryTwo.size()) {
+                    binaryOne = '0' + binaryOne;
+                }
+            }
+
+            std::string xorResult;      // result of the XOR operation
+
+            // do XOR operation
+            for (int i = 0; i < binaryOne.size(); i++) {
+                if (binaryOne[i] != binaryTwo[i]) {
+                    xorResult = xorResult + '1';
+                } else {
+                    xorResult = xorResult + '0';
+                }
+            }
+
+            // Prints the result
+            std::cout << std::endl;
+            std::cout << "      " << binaryOne << std::endl;
+            std::cout << "XOR" << std::endl;
+            std::cout << "      " << binaryTwo << std::endl;
+            std::cout << "-----------------------" << std::endl;
+            std::cout << "      " << xorResult << std::endl;
+
+        // NOT Operation
         } else if (selectOption == 4) {
             std::cout << std::endl;
             std::cout << "NOT Operation Selected\n";
+            std::cout << "Enter a binary number: ";
+            
+            std::string number;
+            std::cin >> number;
+
+            bool validBinary = true;
+
+            // checks if the number is 0 or 1
+            for (int i = 0; i < number.size(); i++) {
+                if (number[i] != '0' && number[i] != '1') {
+                    std::cout << "Invalid binary number!\n";
+                    validBinary = false;
+                    break;
+                }
+            }
+            if (!validBinary) {
+                continue;
+            }
+
+            std::string notResult;
+
+            for (int i = 0; i < number.size(); i++) {
+                if (number[i] == '0') {
+                    notResult = notResult + '1';
+                } else {
+                    notResult = notResult + '0';
+                }
+            }
+
+            // Prints the result
+            std::cout << std::endl;
+            std::cout << "NOT(" << number << ") -> " << notResult;
+            std::cout << std::endl;
+
+        // Shift Left Operation
         } else if (selectOption == 5) {
             std::cout << std::endl;
             std::cout << "Left Shift Selected\n";
+            std::cout << "Enter a binary number: ";
+
+            std::string binaryNumber;       // binary number to be shifted
+            std::cin >> binaryNumber;
+
+            bool validBinary = true;
+
+            // checks if the number is 0 or 1
+            for (int i = 0; i < binaryNumber.size(); i++) {
+                if (binaryNumber[i] != '0' && binaryNumber[i] != '1') {
+                    std::cout << "Invalid binary number!\n";
+                    validBinary = false;
+                    break;
+                }
+            }
+            if (!validBinary) {
+                continue;
+            }
+
+            std::string shiftInput;
+            std::cout << "Enter shift amount: ";
+            std::cin >> shiftInput;
+
+            bool validShiftInput = true;
+
+            for (int i = 0; i < shiftInput.size(); i++) {
+                if (shiftInput[i] < '0' || shiftInput[i] > '9') {
+                    std::cout << "Invalid input!\n";
+                    validShiftInput = false;
+                    break;
+                }
+            }
+            if (!validShiftInput) {
+                continue;
+            }
+
+            // Converting the input into a number
+            unsigned long long shiftAmount;
+            try {
+                shiftAmount = std::stoull(shiftInput);
+            }
+            catch (const std::out_of_range& e) {
+                std::cout << std::endl;
+                std::cout << "Shift amount is too large!\n";
+                continue;
+            }
+
+            if (shiftAmount == 0) {
+                std::cout << std::endl;
+                std::cout << binaryNumber << ", left shift (" << shiftAmount << ") -> " << binaryNumber << std::endl;
+                continue;
+            }
+
+            // Put a limit for the shift amount
+            const unsigned long long MAX_SHIFT = 1024;
+            if (shiftAmount > MAX_SHIFT) {
+                std::cout << "Shift amount is too large! Maximum is 1024.\n";
+                continue;
+            }
+
+            // add zeros to the end of the shift result based on the shift amount
+            std::string shiftResult = binaryNumber;
+            for (unsigned long long i = 0; i < shiftAmount; i++) {
+                shiftResult = shiftResult + '0';
+            }
+
+            // Prints the result
+            std::cout << std::endl;
+            std::cout << binaryNumber << ", left shift (" << shiftAmount << ") -> " << shiftResult << std::endl;
+
         } else if (selectOption == 6) {
             std::cout << std::endl;
             std::cout << "Logical Right Shift Selected\n";
