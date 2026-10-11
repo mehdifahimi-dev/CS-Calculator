@@ -3,12 +3,14 @@
 #include "BasicCalculator.h"
 #include "NumberConverter.h"
 #include "BitwiseCalculator.h"
+#include "TwosComplement.h"
 
 int main () {
 
     BasicCalculator basicCalculator;
     NumberConverter numConverter;
     BitwiseCalculator bitWise;
+    TwosComplement twoComplement;
 
     std::cout << std::endl;
     std::cout<< "CS Calculator" << std::endl;
@@ -42,7 +44,7 @@ int main () {
         } else if (choice == 3) {
             bitWise.run();
         } else if (choice == 4) {
-            std::cout << "2's Complement Selected\n";
+            twoComplement.run();
         } else if (choice == 5) {
             std::cout << "Exit Selected\n";
         } else {
