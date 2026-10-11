@@ -326,6 +326,7 @@ void BitwiseCalculator::run() {
                 continue;
             }
 
+            // prints the original input if the shift amount is 0
             if (shiftAmount == 0) {
                 std::cout << std::endl;
                 std::cout << binaryNumber << ", left shift (" << shiftAmount << ") -> " << binaryNumber << std::endl;
@@ -349,12 +350,170 @@ void BitwiseCalculator::run() {
             std::cout << std::endl;
             std::cout << binaryNumber << ", left shift (" << shiftAmount << ") -> " << shiftResult << std::endl;
 
+        // Logical Right Shift 
         } else if (selectOption == 6) {
             std::cout << std::endl;
             std::cout << "Logical Right Shift Selected\n";
+            std::cout << "Enter a binary number: ";
+
+            std::string biNum;      // binary number to be shifted
+            std::cin >> biNum;
+
+            bool validBinary = true;
+
+            // checks if the number is 0 or 1
+            for (int i = 0; i < biNum.size(); i++) {
+                if (biNum[i] != '0' && biNum[i] != '1') {
+                    std::cout << "Invalid binary number!\n";
+                    validBinary = false;
+                    break;
+                }
+            }
+            if (!validBinary) {
+                continue;
+            }
+
+            
+            std::string rightShiftInput;
+            std::cout << "Enter shift amount: ";
+            std::cin >> rightShiftInput;
+
+            // validate if every character is between '0' and '9'
+            bool validShiftInput = true;
+            for (int i = 0; i < rightShiftInput.size(); i++) {
+                if (rightShiftInput[i] < '0' || rightShiftInput[i] > '9') {
+                    std::cout << "Invalid input!\n";
+                    validShiftInput = false;
+                    break;
+                }
+            }
+            if (!validShiftInput) {
+                continue;
+            }
+
+            // Converting the input into a number
+            unsigned long long shiftAmount;
+            try {
+                shiftAmount = std::stoull(rightShiftInput);
+            }
+            catch (const std::out_of_range& e) {
+                std::cout << std::endl;
+                std::cout << "Shift amount is too large!\n";
+                continue;
+            }
+
+            // prints the original input if the shift amount is 0
+            if (shiftAmount == 0) {
+                std::cout << std::endl;
+                std::cout << biNum << ", logical right shift (" << shiftAmount << ") -> " << biNum << std::endl;
+                continue;
+            }
+
+            // Put a limit for the shift amount
+            const unsigned long long MAX_SHIFT = 1024;
+            if (shiftAmount > MAX_SHIFT) {
+                std::cout << "Shift amount is too large! Maximum is 1024.\n";
+                continue;
+            }
+
+            // Preserves the original bit width
+            std::string resultOfShift = biNum;
+            if (shiftAmount >= biNum.size()) {
+                resultOfShift = std::string(biNum.size(), '0');
+            } else {
+                resultOfShift = std::string(biNum.size(), '0');
+                for (unsigned long long i = shiftAmount; i < biNum.size(); i++) {
+                    resultOfShift[i] = biNum[i - shiftAmount];
+                }
+            }
+
+            // Prints the result
+            std::cout << std::endl;
+            std::cout << biNum << ", logical right shift (" << shiftAmount << ") -> " << resultOfShift << std::endl;
+
+        // Arithmetic right shift operation
         } else if (selectOption == 7) {
             std::cout << std::endl;
             std::cout << "Arithmetic Right Shift Selected\n";
+            std::cout << "Enter a binary number: ";
+
+            std::string arithInput;         // binary number to be shifted
+            std::cin >> arithInput;
+
+            bool validBinary = true;
+
+            // checks if the number is 0 or 1
+            for (int i = 0; i < arithInput.size(); i++) {
+                if (arithInput[i] != '0' && arithInput[i] != '1') {
+                    std::cout << "Invalid binary number!\n";
+                    validBinary = false;
+                    break;
+                }
+            }
+            if (!validBinary) {
+                continue;
+            }
+
+            
+            std::string rightArithShiftInput;
+            std::cout << "Enter shift amount: ";
+            std::cin >> rightArithShiftInput;
+
+            // validate if every character is between '0' and '9'
+            bool validShiftInput = true;
+            for (int i = 0; i < rightArithShiftInput.size(); i++) {
+                if (rightArithShiftInput[i] < '0' || rightArithShiftInput[i] > '9') {
+                    std::cout << "Invalid input!\n";
+                    validShiftInput = false;
+                    break;
+                }
+            }
+            if (!validShiftInput) {
+                continue;
+            }
+
+            // Converting the input into a number
+            unsigned long long shiftAmount;
+            try {
+                shiftAmount = std::stoull(rightArithShiftInput);
+            }
+            catch (const std::out_of_range& e) {
+                std::cout << std::endl;
+                std::cout << "Shift amount is too large!\n";
+                continue;
+            }
+
+            // prints the original input if the shift amount is 0
+            if (shiftAmount == 0) {
+                std::cout << std::endl;
+                std::cout << arithInput << ", arithmetic right shift (" << shiftAmount << ") -> " << arithInput << std::endl;
+                continue;
+            }
+
+            // Put a limit for the shift amount
+            const unsigned long long MAX_SHIFT = 1024;
+            if (shiftAmount > MAX_SHIFT) {
+                std::cout << "Shift amount is too large! Maximum is 1024.\n";
+                continue;
+            }
+
+            char signBit = arithInput[0];
+            
+            // Preserves the original bit width
+            std::string arithResult;
+            if (shiftAmount >= arithInput.size()) {
+                arithResult = std::string(arithInput.size(), signBit);
+            } else {
+                arithResult = std::string(arithInput.size(), signBit);
+                for (unsigned long long i = shiftAmount; i < arithInput.size(); i++) {
+                    arithResult[i] = arithInput[i - shiftAmount];
+                }
+            }
+
+            // Prints the result
+            std::cout << std::endl;
+            std::cout << arithInput << ", arithmetic right shift (" << shiftAmount << ") -> " << arithResult << std::endl;
+
         } else if (selectOption == 8) {
             return;
         } else {
