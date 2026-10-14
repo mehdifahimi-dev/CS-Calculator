@@ -1,5 +1,6 @@
 #include <iostream>
 #include "TwosComplement.h"
+#include "inputValidator.h"
 
 void TwosComplement::run() {
     while (true) {
@@ -28,17 +29,9 @@ void TwosComplement::run() {
             std::string inputInBinary;
             std::cin >> inputInBinary;
 
-            bool validBinary = true;
-
             // checks if the number is 0 or 1
-            for (int i = 0; i < inputInBinary.size(); i++) {
-                if (inputInBinary[i] != '0' && inputInBinary[i] != '1') {
-                    std::cout << "Invalid binary number!\n";
-                    validBinary = false;
-                    break;
-                }
-            }
-            if (!validBinary) {
+            if (!isBinary(inputInBinary)) {
+                std::cout << "Invalid binary number!\n";
                 continue;
             }
 

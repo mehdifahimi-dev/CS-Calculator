@@ -1,5 +1,6 @@
 #include <iostream>
 #include "BitwiseCalculator.h"
+#include "inputValidator.h"
 
 void BitwiseCalculator::run() {
     while (true) {
@@ -35,35 +36,20 @@ void BitwiseCalculator::run() {
             std::string firstBinary;
             std::cin >> firstBinary;
 
-            bool validBinary = true;
-
             // checks if the number is 0 or 1
-            for (int i = 0; i < firstBinary.size(); i++) {
-                if (firstBinary[i] != '0' && firstBinary[i] != '1') {
-                    std::cout << "Invalid binary number!\n";
-                    validBinary = false;
-                    break;
-                }
-            }
-            if (!validBinary) {
+            if (!isBinary(firstBinary)) {
+                std::cout << "Invalid binary number!\n";
                 continue;
             }
+            
 
             std::cout << "Enter second binary number: ";
             std::string secondBinary;
             std::cin >> secondBinary;
 
-            bool validSecondBinary = true;
-
             // checks if the number is 0 or 1
-            for (int i = 0; i < secondBinary.size(); i++) {
-                if (secondBinary[i] != '0' && secondBinary[i] != '1') {
-                    std::cout << "Invalid binary number!\n";
-                    validSecondBinary = false;
-                    break;
-                }
-            }
-            if (!validSecondBinary) {
+            if (!isBinary(secondBinary)) {
+                std::cout << "Invalid binary number!\n";
                 continue;
             }
 
@@ -105,17 +91,9 @@ void BitwiseCalculator::run() {
             std::string binaryNum1;
             std::cin >> binaryNum1;
 
-            bool validBinary = true;
-
             // checks if the number is 0 or 1
-            for (int i = 0; i < binaryNum1.size(); i++) {
-                if (binaryNum1[i] != '0' && binaryNum1[i] != '1') {
-                    std::cout << "Invalid binary number!\n";
-                    validBinary = false;
-                    break;
-                }
-            }
-            if (!validBinary) {
+            if (!isBinary(binaryNum1)) {
+                std::cout << "Invalid binary number!\n";
                 continue;
             }
 
@@ -123,17 +101,9 @@ void BitwiseCalculator::run() {
             std::string binaryNum2;
             std::cin >> binaryNum2;
 
-            bool validSecondBinary = true;
-
             // checks if the number is 0 or 1
-            for (int i = 0; i < binaryNum2.size(); i++) {
-                if (binaryNum2[i] != '0' && binaryNum2[i] != '1') {
-                    std::cout << "Invalid binary number!\n";
-                    validSecondBinary = false;
-                    break;
-                }
-            }
-            if (!validSecondBinary) {
+            if (!isBinary(binaryNum2)) {
+                std::cout << "Invalid binary number!\n";
                 continue;
             }
 
@@ -175,17 +145,9 @@ void BitwiseCalculator::run() {
             std::string binaryOne;
             std::cin >> binaryOne;
 
-            bool validBinary = true;
-
             // checks if the number is 0 or 1
-            for (int i = 0; i < binaryOne.size(); i++) {
-                if (binaryOne[i] != '0' && binaryOne[i] != '1') {
-                    std::cout << "Invalid binary number!\n";
-                    validBinary = false;
-                    break;
-                }
-            }
-            if (!validBinary) {
+            if (!isBinary(binaryOne)) {
+                std::cout << "Invalid binary number!\n";
                 continue;
             }
 
@@ -193,17 +155,9 @@ void BitwiseCalculator::run() {
             std::string binaryTwo;
             std::cin >> binaryTwo;
 
-            bool validSecondBinary = true;
-
             // checks if the number is 0 or 1
-            for (int i = 0; i < binaryTwo.size(); i++) {
-                if (binaryTwo[i] != '0' && binaryTwo[i] != '1') {
-                    std::cout << "Invalid binary number!\n";
-                    validSecondBinary = false;
-                    break;
-                }
-            }
-            if (!validSecondBinary) {
+            if (!isBinary(binaryTwo)) {
+                std::cout << "Invalid binary number!\n";
                 continue;
             }
 
@@ -246,17 +200,9 @@ void BitwiseCalculator::run() {
             std::string number;
             std::cin >> number;
 
-            bool validBinary = true;
-
             // checks if the number is 0 or 1
-            for (int i = 0; i < number.size(); i++) {
-                if (number[i] != '0' && number[i] != '1') {
-                    std::cout << "Invalid binary number!\n";
-                    validBinary = false;
-                    break;
-                }
-            }
-            if (!validBinary) {
+            if (!isBinary(number)) {
+                std::cout << "Invalid binary number!\n";
                 continue;
             }
 
@@ -284,17 +230,9 @@ void BitwiseCalculator::run() {
             std::string binaryNumber;       // binary number to be shifted
             std::cin >> binaryNumber;
 
-            bool validBinary = true;
-
             // checks if the number is 0 or 1
-            for (int i = 0; i < binaryNumber.size(); i++) {
-                if (binaryNumber[i] != '0' && binaryNumber[i] != '1') {
-                    std::cout << "Invalid binary number!\n";
-                    validBinary = false;
-                    break;
-                }
-            }
-            if (!validBinary) {
+            if (!isBinary(binaryNumber)) {
+                std::cout << "Invalid binary number!\n";
                 continue;
             }
 
@@ -359,17 +297,9 @@ void BitwiseCalculator::run() {
             std::string biNum;      // binary number to be shifted
             std::cin >> biNum;
 
-            bool validBinary = true;
-
             // checks if the number is 0 or 1
-            for (int i = 0; i < biNum.size(); i++) {
-                if (biNum[i] != '0' && biNum[i] != '1') {
-                    std::cout << "Invalid binary number!\n";
-                    validBinary = false;
-                    break;
-                }
-            }
-            if (!validBinary) {
+            if (!isBinary(biNum)) {
+                std::cout << "Invalid binary number!\n";
                 continue;
             }
 
@@ -440,21 +370,12 @@ void BitwiseCalculator::run() {
             std::string arithInput;         // binary number to be shifted
             std::cin >> arithInput;
 
-            bool validBinary = true;
-
             // checks if the number is 0 or 1
-            for (int i = 0; i < arithInput.size(); i++) {
-                if (arithInput[i] != '0' && arithInput[i] != '1') {
-                    std::cout << "Invalid binary number!\n";
-                    validBinary = false;
-                    break;
-                }
-            }
-            if (!validBinary) {
+            if (!isBinary(arithInput)) {
+                std::cout << "Invalid binary number!\n";
                 continue;
             }
 
-            
             std::string rightArithShiftInput;
             std::cout << "Enter shift amount: ";
             std::cin >> rightArithShiftInput;
