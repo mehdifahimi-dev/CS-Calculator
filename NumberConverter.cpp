@@ -4,6 +4,7 @@
 #include <string>
 #include <stdexcept>
 #include "NumberConverter.h"
+#include "inputValidator.h"
 
 void NumberConverter::run() {
 
@@ -41,16 +42,8 @@ void NumberConverter::run() {
             std::cout << "Enter a non-negative integer: ";
             std::cin >> decimalInput;
 
-            bool validDecimalToBinary = true;
-
-            for (int i = 0; i < decimalInput.size(); i++) {
-                if (decimalInput[i] < '0' || decimalInput[i] > '9') {
-                    std::cout << "Invalid input!\n";
-                    validDecimalToBinary = false;
-                    break;
-                }
-            }
-            if (!validDecimalToBinary) {
+            if (!isNonNegativeInteger(decimalInput)) {
+                std::cout << "Invalid input!\n";
                 continue;
             }
 
@@ -134,17 +127,8 @@ void NumberConverter::run() {
             std::cout << "Enter a non-negative integer: ";
             std::cin >> nonNegativeNum1;
 
-            bool validDecimalToHex = true;
-
-            for (int i = 0; i < nonNegativeNum1.size(); i++) {
-                if (nonNegativeNum1[i] < '0' || nonNegativeNum1[i] > '9') {
-                    std::cout << "Invalid input!\n";
-                    validDecimalToHex = false;
-                    break;
-                }
-            }
-
-            if (!validDecimalToHex) {
+            if (!isNonNegativeInteger(nonNegativeNum1)) {
+                std::cout << "Invalid input!\n";
                 continue;
             }
 
@@ -250,17 +234,9 @@ void NumberConverter::run() {
             std::string decNum;
             std::cout << "Enter a non-negative integer: ";
             std::cin >> decNum;
-            
-            bool validDecimalToOctal = true;
 
-            for (int i = 0; i < decNum.size(); i++) {
-                if (decNum[i] < '0' || decNum[i] > '9') {
-                    std::cout << "Invalid input!\n";
-                    validDecimalToOctal = false;
-                    break;
-                }
-            }
-            if (!validDecimalToOctal) {
+            if (!isNonNegativeInteger(decNum)) {
+                std::cout << "Invalid input!\n";
                 continue;
             }
 

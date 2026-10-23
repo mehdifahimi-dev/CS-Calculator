@@ -10,3 +10,12 @@ bool isBinary(const std::string& input) {
     }
     return true;
 }
+
+bool isNonNegativeInteger(const std::string& input) {
+    for (int i = 0; i < input.size(); i++) {
+        if (input[i] < '0' || input[i] > '9') {
+            return false;
+        }
+    }
+    return true;
+}

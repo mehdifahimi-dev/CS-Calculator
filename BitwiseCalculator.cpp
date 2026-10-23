@@ -1,6 +1,7 @@
 #include <iostream>
 #include "BitwiseCalculator.h"
 #include "inputValidator.h"
+#include "binaryHelper.h"
 
 void BitwiseCalculator::run() {
     while (true) {
@@ -54,15 +55,7 @@ void BitwiseCalculator::run() {
             }
 
             // makes the two binary number the same length by adding leading 0 if one is shorter
-            if (firstBinary.size() > secondBinary.size()) {
-                while (secondBinary.size() != firstBinary.size()) {
-                    secondBinary = '0' + secondBinary;
-                }
-            } else {
-                while (firstBinary.size() != secondBinary.size()) {
-                    firstBinary = '0' + firstBinary;
-                }
-            }
+            padBinaryStrings(firstBinary, secondBinary);
 
             std::string andResult;      // result of the AND operation
 
@@ -108,15 +101,7 @@ void BitwiseCalculator::run() {
             }
 
             // makes the two binary number the same length by adding leading 0 if one is shorter
-            if (binaryNum1.size() > binaryNum2.size()) {
-                while (binaryNum2.size() != binaryNum1.size()) {
-                    binaryNum2 = '0' + binaryNum2;
-                }
-            } else {
-                while (binaryNum1.size() != binaryNum2.size()) {
-                    binaryNum1 = '0' + binaryNum1;
-                }
-            }
+            padBinaryStrings(binaryNum1, binaryNum2);
 
             std::string orResult;      // result of the OR operation
 
@@ -162,15 +147,7 @@ void BitwiseCalculator::run() {
             }
 
             // makes the two binary number the same length by adding leading 0 if one is shorter
-            if (binaryOne.size() > binaryTwo.size()) {
-                while (binaryTwo.size() != binaryOne.size()) {
-                    binaryTwo = '0' + binaryTwo;
-                }
-            } else {
-                while (binaryOne.size() != binaryTwo.size()) {
-                    binaryOne = '0' + binaryOne;
-                }
-            }
+            padBinaryStrings(binaryOne, binaryTwo);
 
             std::string xorResult;      // result of the XOR operation
 
@@ -240,16 +217,8 @@ void BitwiseCalculator::run() {
             std::cout << "Enter shift amount: ";
             std::cin >> shiftInput;
 
-            bool validShiftInput = true;
-
-            for (int i = 0; i < shiftInput.size(); i++) {
-                if (shiftInput[i] < '0' || shiftInput[i] > '9') {
-                    std::cout << "Invalid input!\n";
-                    validShiftInput = false;
-                    break;
-                }
-            }
-            if (!validShiftInput) {
+            if (!isNonNegativeInteger(shiftInput)) {
+                std::cout << "Invalid input!\n";
                 continue;
             }
 
@@ -309,15 +278,8 @@ void BitwiseCalculator::run() {
             std::cin >> rightShiftInput;
 
             // validate if every character is between '0' and '9'
-            bool validShiftInput = true;
-            for (int i = 0; i < rightShiftInput.size(); i++) {
-                if (rightShiftInput[i] < '0' || rightShiftInput[i] > '9') {
-                    std::cout << "Invalid input!\n";
-                    validShiftInput = false;
-                    break;
-                }
-            }
-            if (!validShiftInput) {
+            if (!isNonNegativeInteger(rightShiftInput)) {
+                std::cout << "Invalid input!\n";
                 continue;
             }
 
@@ -381,15 +343,8 @@ void BitwiseCalculator::run() {
             std::cin >> rightArithShiftInput;
 
             // validate if every character is between '0' and '9'
-            bool validShiftInput = true;
-            for (int i = 0; i < rightArithShiftInput.size(); i++) {
-                if (rightArithShiftInput[i] < '0' || rightArithShiftInput[i] > '9') {
-                    std::cout << "Invalid input!\n";
-                    validShiftInput = false;
-                    break;
-                }
-            }
-            if (!validShiftInput) {
+            if (!isNonNegativeInteger(rightArithShiftInput)) {
+                std::cout << "Invalid input!\n";
                 continue;
             }
 
