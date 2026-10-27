@@ -222,14 +222,9 @@ void BitwiseCalculator::run() {
                 continue;
             }
 
-            // Converting the input into a number
             unsigned long long shiftAmount;
-            try {
-                shiftAmount = std::stoull(shiftInput);
-            }
-            catch (const std::out_of_range& e) {
-                std::cout << std::endl;
-                std::cout << "Shift amount is too large!\n";
+            if (!parseShiftAmount(shiftInput, shiftAmount)) {
+                std::cout << "Shift amount is too large! Maximum is 1024.\n";
                 continue;
             }
 
@@ -237,13 +232,6 @@ void BitwiseCalculator::run() {
             if (shiftAmount == 0) {
                 std::cout << std::endl;
                 std::cout << binaryNumber << ", left shift (" << shiftAmount << ") -> " << binaryNumber << std::endl;
-                continue;
-            }
-
-            // Put a limit for the shift amount
-            const unsigned long long MAX_SHIFT = 1024;
-            if (shiftAmount > MAX_SHIFT) {
-                std::cout << "Shift amount is too large! Maximum is 1024.\n";
                 continue;
             }
 
@@ -272,7 +260,6 @@ void BitwiseCalculator::run() {
                 continue;
             }
 
-            
             std::string rightShiftInput;
             std::cout << "Enter shift amount: ";
             std::cin >> rightShiftInput;
@@ -283,14 +270,9 @@ void BitwiseCalculator::run() {
                 continue;
             }
 
-            // Converting the input into a number
             unsigned long long shiftAmount;
-            try {
-                shiftAmount = std::stoull(rightShiftInput);
-            }
-            catch (const std::out_of_range& e) {
-                std::cout << std::endl;
-                std::cout << "Shift amount is too large!\n";
+            if (!parseShiftAmount(rightShiftInput, shiftAmount)) {
+                std::cout << "Shift amount is too large! Maximum is 1024.\n";
                 continue;
             }
 
@@ -298,13 +280,6 @@ void BitwiseCalculator::run() {
             if (shiftAmount == 0) {
                 std::cout << std::endl;
                 std::cout << biNum << ", logical right shift (" << shiftAmount << ") -> " << biNum << std::endl;
-                continue;
-            }
-
-            // Put a limit for the shift amount
-            const unsigned long long MAX_SHIFT = 1024;
-            if (shiftAmount > MAX_SHIFT) {
-                std::cout << "Shift amount is too large! Maximum is 1024.\n";
                 continue;
             }
 
@@ -348,14 +323,9 @@ void BitwiseCalculator::run() {
                 continue;
             }
 
-            // Converting the input into a number
             unsigned long long shiftAmount;
-            try {
-                shiftAmount = std::stoull(rightArithShiftInput);
-            }
-            catch (const std::out_of_range& e) {
-                std::cout << std::endl;
-                std::cout << "Shift amount is too large!\n";
+            if (!parseShiftAmount(rightArithShiftInput, shiftAmount)) {
+                std::cout << "Shift amount is too large! Maximum is 1024.\n";
                 continue;
             }
 
@@ -363,13 +333,6 @@ void BitwiseCalculator::run() {
             if (shiftAmount == 0) {
                 std::cout << std::endl;
                 std::cout << arithInput << ", arithmetic right shift (" << shiftAmount << ") -> " << arithInput << std::endl;
-                continue;
-            }
-
-            // Put a limit for the shift amount
-            const unsigned long long MAX_SHIFT = 1024;
-            if (shiftAmount > MAX_SHIFT) {
-                std::cout << "Shift amount is too large! Maximum is 1024.\n";
                 continue;
             }
 
