@@ -48,10 +48,8 @@ void NumberConverter::run() {
             }
 
             unsigned long long decToBinary;
-            try {
-                decToBinary = std::stoull(decimalInput);
-            }
-            catch (const std::out_of_range& e) {
+            if (!parseUnsignedInteger(decimalInput, decToBinary)) {
+                std::cout << std::endl;
                 std::cout << "Number is too large!\n";
                 continue;
             }
@@ -83,18 +81,9 @@ void NumberConverter::run() {
             std::cout << "Enter a binary number: ";
             std::cin >> binary;
 
-            bool validBinaryToDecimal = true;
-
-            // checks if the number is 0 or 1
-            for (int i = 0; i < binary.size(); i++) {
-                if (binary[i] != '0' && binary[i] != '1') {
-                    std::cout << "Invalid binary number!\n";
-                    validBinaryToDecimal = false;
-                    break;
-                }
-            }
-            
-            if (!validBinaryToDecimal) {
+            if (!isBinary(binary)) {
+                std::cout << std::endl;
+                std::cout << "Invalid binary number!\n";
                 continue;
             }
 
@@ -133,13 +122,12 @@ void NumberConverter::run() {
             }
 
             unsigned long long convertedString;
-            try {
-                convertedString = std::stoull(nonNegativeNum1);
-            }
-            catch (const std::out_of_range& e) {
+            if (!parseUnsignedInteger(nonNegativeNum1, convertedString)) {
+                std::cout << std::endl;
                 std::cout << "Number is too large!\n";
                 continue;
             }
+
             unsigned long long dec = convertedString;
 
             std::vector <char> hexDecimal;
@@ -241,10 +229,8 @@ void NumberConverter::run() {
             }
 
             unsigned long long decToOc;
-            try {
-                decToOc = std::stoull(decNum);
-            }
-            catch (const std::out_of_range& e) {
+            if (!parseUnsignedInteger(decNum, decToOc)) {
+                std::cout << std::endl;
                 std::cout << "Number is too large!\n";
                 continue;
             }
@@ -277,17 +263,9 @@ void NumberConverter::run() {
             std::string binaryNum;
             std::cin >> binaryNum;
 
-            bool validBinary = true;
-
-            // checks if the number is 0 or 1
-            for (int i = 0; i < binaryNum.size(); i++) {
-                if (binaryNum[i] != '0' && binaryNum[i] != '1') {
-                    std::cout << "Invalid binary number!\n";
-                    validBinary = false;
-                    break;
-                }
-            }
-            if (!validBinary) {
+            if (!isBinary(binaryNum)) {
+                std::cout << std::endl;
+                std::cout << "Invalid binary number!\n";
                 continue;
             }
 

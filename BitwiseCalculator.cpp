@@ -182,16 +182,8 @@ void BitwiseCalculator::run() {
                 std::cout << "Invalid binary number!\n";
                 continue;
             }
-
-            std::string notResult;
-
-            for (int i = 0; i < number.size(); i++) {
-                if (number[i] == '0') {
-                    notResult = notResult + '1';
-                } else {
-                    notResult = notResult + '0';
-                }
-            }
+            
+            std::string notResult = invertBinary(number);
 
             // Prints the result
             std::cout << std::endl;

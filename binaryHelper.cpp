@@ -28,3 +28,15 @@ bool parseShiftAmount(const std::string& input, unsigned long long& shiftAmount)
     }
     return true;
 }
+
+std::string invertBinary(const std::string& input) {
+    std::string invertResult;
+    for (int i = 0; i < input.size(); i++) {
+        if (input[i] == '0') {
+            invertResult = invertResult + '1';
+        } else {
+            invertResult = invertResult + '0';
+        }
+    }
+    return invertResult;
+}

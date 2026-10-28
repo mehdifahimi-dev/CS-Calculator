@@ -6,4 +6,6 @@ void padBinaryStrings(std::string& first, std::string& second);
 
 bool parseShiftAmount(const std::string& input, unsigned long long& shiftAmount);
 
+std::string invertBinary(const std::string& input);
+
 #endif

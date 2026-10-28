@@ -1,6 +1,7 @@
 #include <iostream>
 #include "TwosComplement.h"
 #include "inputValidator.h"
+#include "binaryHelper.h"
 
 void TwosComplement::run() {
     while (true) {
@@ -35,14 +36,7 @@ void TwosComplement::run() {
                 continue;
             }
 
-            std::string invertedBits;
-            for (int i = 0; i < inputInBinary.size(); i++) {
-                if (inputInBinary[i] == '0') {
-                    invertedBits = invertedBits + '1';
-                } else {
-                    invertedBits = invertedBits + '0';
-                }
-            }
+            std::string invertedBits = invertBinary(inputInBinary);
 
             for (int i = invertedBits.size() - 1; i >= 0; i--) {
                 if (invertedBits[i] == '0') {
