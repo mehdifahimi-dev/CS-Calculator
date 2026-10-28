@@ -30,7 +30,8 @@ int main () {
         std::cin >> choice;
 
         if (std::cin.fail()) {
-            std::cout << "Invalid input!\n";
+            std::cout << std::endl;
+            std::cout << "Invalid Choice!\n";
             std::cout << std::endl;
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -48,7 +49,8 @@ int main () {
         } else if (choice == 5) {
             std::cout << "Exit Selected\n";
         } else {
-            std::cout << "*Invalid Choice*\n";
+            std::cout << std::endl;
+            std::cout << "Invalid Choice!\n";
         }
         std::cout << std::endl;
     } while (choice != 5);

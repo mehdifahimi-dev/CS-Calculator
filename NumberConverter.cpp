@@ -27,6 +27,7 @@ void NumberConverter::run() {
         std::cin >> option;
 
         if (option.size() != 1 || option[0] < '1' || option[0] > '8') {
+            std::cout << std::endl;
             std::cout << "Invalid Choice!\n";
             continue;
         }
@@ -43,6 +44,7 @@ void NumberConverter::run() {
             std::cin >> decimalInput;
 
             if (!isNonNegativeInteger(decimalInput)) {
+                std::cout << std::endl;
                 std::cout << "Invalid input!\n";
                 continue;
             }
@@ -95,6 +97,7 @@ void NumberConverter::run() {
                 int digitValue = binary[i] - '0';
 
                 if (result > (maxValue - digitValue) / 2) {
+                    std::cout << std::endl;
                     std::cout << "Number is too large!\n";
                     binaryOverflow = true;
                     break;
@@ -117,6 +120,7 @@ void NumberConverter::run() {
             std::cin >> nonNegativeNum1;
 
             if (!isNonNegativeInteger(nonNegativeNum1)) {
+                std::cout << std::endl;
                 std::cout << "Invalid input!\n";
                 continue;
             }
@@ -169,6 +173,7 @@ void NumberConverter::run() {
             // validation for hexadecimal number
             for (int i = 0; i < hexa.size(); i++) {
                 if (!((hexa[i] >= '0' && hexa[i] <= '9') || (hexa[i] >= 'A' && hexa[i] <= 'F') || (hexa[i] >= 'a' && hexa[i] <= 'f'))) {
+                    std::cout << std::endl;
                     std::cout << "Invalid hexadecimal number!\n";
                     validHexaToDecimal = false;
                     break;
@@ -202,6 +207,7 @@ void NumberConverter::run() {
                 }
 
                 if (hexToDecResult > (maxValue - digitValue) / 16) {
+                    std::cout << std::endl;
                     std::cout << "Number is too large!\n";
                     hexOverflow = true;
                     break;
@@ -224,6 +230,7 @@ void NumberConverter::run() {
             std::cin >> decNum;
 
             if (!isNonNegativeInteger(decNum)) {
+                std::cout << std::endl;
                 std::cout << "Invalid input!\n";
                 continue;
             }
@@ -304,6 +311,7 @@ void NumberConverter::run() {
             // check if the number is between 0 and 7
             for (int i = 0; i < octalNum.size(); i++) {
                 if (octalNum[i] < '0' || octalNum[i] > '7') {
+                    std::cout << std::endl;
                     std::cout << "Invalid octal number!\n";
                     validOctal = false;
                     break;
