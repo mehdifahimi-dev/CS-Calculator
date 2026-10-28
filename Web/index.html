@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>CS Calculator</h1>
+
+    <div class="main-menu">
+        <button id="basic-button">Basic Calculator</button>
+        <button id="converter-button">Number System Converter</button>
+        <button id="bitwise-button">Bitwise Calculator</button>
+        <button id="twos-button">2's Complement</button>
+    </div>
+
+    <div id="basic-calculator" hidden>
+        <h2>Basic Calculator</h2>
+
+        <input id="first-number" type="number" placeholder="First number">
+
+        <select id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">×</option>
+            <option value="/">÷</option>
+            <option value="%">%</option>
+        </select>
+
+        <input id="second-number" type="number" placeholder="Second number">
+
+        <button id="calculate-button">Calculate</button>
+
+        <p id="result"></p>
+
+        <button id="back-button">Back</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

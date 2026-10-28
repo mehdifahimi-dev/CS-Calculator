@@ -1,0 +1,19 @@
+body {
+    text-align: center;     /*Centres the text*/
+}
+
+.main-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;              /* Add spaces between buttons*/
+    width: 300px;
+    margin: 0 auto;
+}
+
+button {
+    padding: 10px;
+}
+
+[hidden] {
+    display: none !important;
+}
