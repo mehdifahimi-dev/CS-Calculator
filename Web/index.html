@@ -19,6 +19,7 @@
         <button id="twos-button">2's Complement</button>
     </div>
 
+    <!-- Basic Calculator Section -->
     <div id="basic-calculator" hidden>
         <h2>Basic Calculator</h2>
 
@@ -39,6 +40,53 @@
         <p id="result"></p>
 
         <button id="back-button">Back</button>
+    </div>
+
+    <!-- Number System Converter Section -->
+    <div id="converter" hidden>
+        <h2>Number System Converter</h2>
+
+        <select id="conversion-type">
+            <option value="decimal-binary">Decimal to Binary</option>
+            <option value="binary-decimal">Binary to Decimal</option>
+            <option value="decimal-hex">Decimal to Hexadecimal</option>
+            <option value="hex-decimal">Hexadecimal to Decimal</option>
+            <option value="decimal-octal">Decimal to Octal</option>
+            <option value="binary-octal">Binary to Octal</option>
+            <option value="octal-binary">Octal to Binary</option>
+        </select>
+
+        <input id="conversion-input" type="text" placeholder="Enter value">
+
+        <button id="convert-button">Convert</button>
+
+        <p id="conversion-result"></p>
+
+        <button id="converter-back-button">Back</button>
+    </div>
+
+    <!-- Bitwise Calculator Section -->
+    <div id="bitwise-calculator" hidden>
+        <h2>Bitwise Calculator</h2>
+
+        <select id="bitwise-operation">
+            <option value="and">AND</option>
+            <option value="or">OR</option>
+            <option value="xor">XOR</option>
+            <option value="not">NOT</option>
+            <option value="left-shift">Left Shift</option>
+            <option value="logical-right-shift">Logical Right Shift</option>
+            <option value="arithmetic-right-shift">Arithmetic Right Shift</option>
+        </select>
+
+        <button id="bitwise-back-button">Back</button>
+    </div>
+
+    <!-- Two's Complement Section -->
+    <div id="twos-complement" hidden>
+        <h2>2's Complement</h2>
+
+        <button id="twos-back-button">Back</button>
     </div>
 
     <script src="app.js"></script>
