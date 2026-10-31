@@ -17,3 +17,28 @@ button {
 [hidden] {
     display: none !important;
 }
+
+#basic-calculator input,
+#basic-calculator select,
+#basic-calculator button,
+#converter input,
+#converter select,
+#converter button,
+#bitwise-calculator input,
+#bitwise-calculator select,
+#bitwise-calculator button,
+#twos-complement input,
+#twos-complement select,
+#twos-complement button {
+    height: 40px;
+    box-sizing: border-box;
+}
+
+#bitwise-operation {
+    width: 160px;
+}
+
+#bitwise-first-input,
+#bitwise-second-input {
+    width: 180px;
+}

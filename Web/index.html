@@ -23,7 +23,7 @@
     <div id="basic-calculator" hidden>
         <h2>Basic Calculator</h2>
 
-        <input id="first-number" type="number" placeholder="First number">
+        <input id="first-number" type="text" placeholder="First number">
 
         <select id="operator">
             <option value="+">+</option>
@@ -33,7 +33,7 @@
             <option value="%">%</option>
         </select>
 
-        <input id="second-number" type="number" placeholder="Second number">
+        <input id="second-number" type="text" placeholder="Second number">
 
         <button id="calculate-button">Calculate</button>
 
@@ -79,12 +79,25 @@
             <option value="arithmetic-right-shift">Arithmetic Right Shift</option>
         </select>
 
+        <input id="bitwise-first-input" type="text" placeholder="Enter first binary number">
+        <input id="bitwise-second-input" type="text" placeholder="Enter second binary number">
+
+        <button id="bitwise-calculate-button">Calculate</button>
+
+        <p id="bitwise-result"></p>
+
         <button id="bitwise-back-button">Back</button>
     </div>
 
     <!-- Two's Complement Section -->
     <div id="twos-complement" hidden>
         <h2>2's Complement</h2>
+
+        <input id="twos-input" type="text" placeholder="Enter binary number">
+
+        <button id="twos-calculate-button">Calculate</button>
+
+        <p id="twos-result"></p>
 
         <button id="twos-back-button">Back</button>
     </div>
